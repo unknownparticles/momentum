@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Helvetica Neue", sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
+  
+  --color-primary: #007AFF; /* Apple System Blue */
+  --color-success: #34C759; /* Apple System Green */
+  --color-warning: #FF9500; /* Apple System Orange */
+  --color-danger: #FF3B30;  /* Apple System Red */
+  
+  --color-bg-light: #F2F2F7;
+  --color-card-light: rgba(255, 255, 255, 0.8);
+  --color-text-light: #000000;
+
+  --color-bg-dark: #000000;
+  --color-card-dark: rgba(28, 28, 30, 0.8);
+  --color-text-dark: #FFFFFF;
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased;
+    background-color: var(--color-bg-light);
+    color: var(--color-text-light);
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    min-width: 320px;
+  }
+
+  .dark body {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-dark);
+  }
+
+  h1, h2, h3 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer components {
+  .apple-card {
+    @apply rounded-2xl transition-all duration-300;
+    background-color: var(--color-card-light);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 0.5px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .dark .apple-card {
+    background-color: var(--color-card-dark);
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .dock {
+    @apply fixed left-1/2 -translate-x-1/2 px-2 py-2 rounded-[2.5rem] z-50 backdrop-blur-2xl border flex items-center;
+    bottom: max(2rem, calc(env(safe-area-inset-bottom) + 1rem));
+    background-color: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.05);
+    width: fit-content;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+  }
+
+  .dark .dock {
+    background-color: rgba(28, 28, 30, 0.7);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-system {
+    @apply px-5 py-2.5 rounded-full font-semibold transition-all active:scale-[0.96] flex items-center justify-center gap-2;
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  .secondary-label {
+    @apply text-[13px] font-medium text-gray-500 dark:text-gray-400;
+  }
+
+  .safe-areas {
+    padding-top: max(1.5rem, env(safe-area-inset-top));
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* iOS Style Transitions */
+.view-enter { opacity: 0; transform: scale(1.02); }
+.view-enter-active { opacity: 1; transform: scale(1); transition: all 400ms cubic-bezier(0.32, 1, 0.2, 1); }
+
+/* Squircle approximation */
+.squircle {
+  border-radius: 20%;
+}

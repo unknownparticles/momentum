@@ -1,0 +1,6 @@
+{
+  "name": "慢慢来",
+  "description": "手机优先的 PWA 自律启动器，通过 AI 小任务、XP 和轻量复盘帮助用户每天开始一点点。",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
