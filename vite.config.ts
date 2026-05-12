@@ -4,6 +4,7 @@ import {defineConfig} from 'vite';
 import {VitePWA} from 'vite-plugin-pwa';
 
 export default defineConfig({
+  base: '/momentum/',
   plugins: [
     react(),
     tailwindcss(),
@@ -13,21 +14,22 @@ export default defineConfig({
         name: '慢慢来',
         short_name: '慢慢来',
         description: '每天只开始一点点的手机 PWA 自律启动器。',
+        lang: 'zh-CN',
         theme_color: '#F2F2F7',
         background_color: '#F2F2F7',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: '/',
-        scope: '/',
+        start_url: '/momentum/',
+        scope: '/momentum/',
         icons: [
           {
-            src: '/pwa-192.svg',
+            src: 'pwa-192.svg',
             sizes: '192x192',
             type: 'image/svg+xml',
             purpose: 'any maskable',
           },
           {
-            src: '/pwa-512.svg',
+            src: 'pwa-512.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
             purpose: 'any maskable',
